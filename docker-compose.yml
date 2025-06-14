@@ -23,3 +23,15 @@ services:
       - /data/mysql
 networks:
   springboot-db-net:
+  application:
+  build: .                # This tells Docker to build from your Dockerfile
+  image: spring-boot-mysql-app
+  ports:
+    - "8080:8080"
+  networks:
+    - springboot-db-net
+  depends_on:
+    - mysqldb
+  volumes:
+    - /data/springboot-app
+
